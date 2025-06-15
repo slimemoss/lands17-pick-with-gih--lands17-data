@@ -1,0 +1,5 @@
+**/*~
+.venv
+**/__pycache__
+cache_data
+public_data

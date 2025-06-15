@@ -1,0 +1,29 @@
+name: Daily update
+
+on:
+  schedule:
+    # 1日1回 https://zenn.dev/rie_amasato/articles/f901ef9fb19415
+    - cron: "40 18 * * *"
+  workflow_dispatch:
+
+jobs:
+  update_data:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: 3.12
+      - run: |
+          sed -i '/^public_data$/d' .gitignore
+          pip install -r requirements.txt
+          python main.py
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "[Bot] auto update"
+          branch: publish
+          create_branch: true
