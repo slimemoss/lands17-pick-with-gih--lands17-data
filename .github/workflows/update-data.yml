@@ -27,3 +27,4 @@ jobs:
           commit_message: "[Bot] auto update"
           branch: publish
           create_branch: true
+          push_options: '--force'
