@@ -4,10 +4,6 @@ from typing import List, Optional
 from pydantic import BaseModel, RootModel
 
 
-class Layout(Enum):
-    STANDARD = "standard"
-
-
 class Rarity(Enum):
     COMMON = "common"
     MYTHIC = "mythic"
@@ -23,7 +19,6 @@ class CardDetail(BaseModel):
     url: str
     url_back: str
     types: List[str]
-    layout: Layout
     seen_count: int
     pick_count: int
     game_count: int
