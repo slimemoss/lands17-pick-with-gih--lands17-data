@@ -36,7 +36,14 @@ class CardDetail(BaseModel):
     ever_drawn_win_rate: Optional[float] = None
     never_drawn_win_rate: Optional[float] = None
     drawn_improvement_win_rate: Optional[float] = None
+    layout: Optional[str] = None
 
 
 class CardDetails(RootModel):
     root: list[CardDetail]
+
+
+class CardDataResponse(BaseModel):
+    copyright: Optional[str] = None
+    notes: Optional[str] = None
+    data: list[CardDetail]
